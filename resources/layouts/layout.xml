@@ -1,0 +1,9 @@
+<layout id="WatchFace">
+    <drawable class="Background" />
+
+	<label id="TimeHour" x="45%" y="center" font="Graphics.FONT_NUMBER_HOT" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_WHITE"/>
+	<label id="TimeSeparator" x="center" y="42%" font="Graphics.FONT_NUMBER_MILD" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_WHITE"/>
+	<label id="TimeMinutes" x="52%" y="42%" font="Graphics.FONT_NUMBER_MILD" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_LT_GRAY"/>
+
+	<label id="Date" x="52%" y="38%" font="Graphics.FONT_SYSTEM_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE"/>
+</layout>
