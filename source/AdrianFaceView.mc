@@ -1,13 +1,23 @@
-using Toybox.WatchUi;
+using Toybox.WatchUi as Ui;
 using Toybox.Graphics;
 using Toybox.System;
 using Toybox.Lang;
 using Toybox.Application;
+using Graphics as Gfx;
 
 using Toybox.Time;
 using Toybox.Time.Gregorian;
 
-class AdrianFaceView extends WatchUi.WatchFace {
+class AdrianFaceView extends Ui.WatchFace {
+
+	var hoursView;
+	var separatorView;
+	var minutesView;
+	var dateView;
+	var topIndicatorLongText1View;
+	var topIndicatorLongText2View;
+	
+	var bluetoothIcon;
 
     function initialize() {
         WatchFace.initialize();
@@ -22,6 +32,8 @@ class AdrianFaceView extends WatchUi.WatchFace {
     // the state of this View and prepare it to be shown. This includes
     // loading resources into memory.
     function onShow() {
+    	bluetoothIcon = Ui.loadResource(Rez.Drawables.IconBluetooth);
+    	
     }
 
     // Update the view
@@ -46,20 +58,42 @@ class AdrianFaceView extends WatchUi.WatchFace {
 		);
 		
         // Update the view
-        var hoursView = View.findDrawableById("TimeHour");
+        hoursView = View.findDrawableById("TimeHour");
         hoursView.setText(hoursString);
         
-        var separatorView = View.findDrawableById("TimeSeparator");
+        separatorView = View.findDrawableById("TimeSeparator");
        	separatorView.setText(":");
        	
-        var minutesView = View.findDrawableById("TimeMinutes");
+        minutesView = View.findDrawableById("TimeMinutes");
         minutesView.setText(minutesString);
 
-		var dateView = View.findDrawableById("Date");
+		dateView = View.findDrawableById("Date");
 		dateView.setText(dateString);
+		
+		topIndicatorLongText1View = View.findDrawableById("TopIndicatorLongText1");
+		// next sun event
+		topIndicatorLongText1View.setText("️20:13");
 
-        // Call the parent onUpdate function to redraw the layout
+		topIndicatorLongText2View = View.findDrawableById("TopIndicatorLongText2");		
+		topIndicatorLongText2View.setText("4d (80%)");
+
+
+        // bluetooth
         View.onUpdate(dc);
+        
+        /*
+        var font = WatchUi.loadResource(Rez.Fonts.CustomFont);
+        dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_WHITE);
+        
+        dc.drawText(100,60, font, Lang.format(
+	    	"$1$ $2$",
+		    	[
+			        "~",
+			        "bt"
+			        
+			    ]
+			), Graphics.TEXT_JUSTIFY_LEFT);*/
+		
     }
 
     // Called when this View is removed from the screen. Save the

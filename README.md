@@ -12,3 +12,5 @@ Useful articles:
 
 Images sources:
 
+- Battery icons: https://www.freepik.com/free-photos-vectors/icon Icon vector created by johndory - www.freepik.com
+- Bluetooth icon: https://www.flaticon.com/authors/smashicons
