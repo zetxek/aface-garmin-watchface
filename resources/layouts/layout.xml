@@ -5,15 +5,23 @@
 	<label id="TimeSeparator" x="center" y="42%" font="Graphics.FONT_NUMBER_MILD" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_WHITE"/>
 	<label id="TimeMinutes" x="52%" y="42%" font="Graphics.FONT_NUMBER_MILD" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_LT_GRAY"/>
 
-	<label id="Date" x="52%" y="38%" font="Graphics.FONT_SYSTEM_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE"/>
+	<label id="Date" x="52%" y="38%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE"/>
 
 	<label id="TopIndicatorLongIcon1" x="18%" y="19%" font="@Fonts.CustomFont" color="Graphics.COLOR_LT_GRAY" text="^"/>
-	<label id="TopIndicatorLongText1" x="26%" y="18%" font="Graphics.FONT_SYSTEM_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_LT_GRAY"/>
+	<label id="TopIndicatorLongText1" x="26%" y="18%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_LT_GRAY"/>
 	<label id="TopIndicatorLongIcon2" x="18%" y="27%" font="@Fonts.CustomFont" color="Graphics.COLOR_LT_GRAY" text=">"/>
-	<label id="TopIndicatorLongText2" x="26%" y="26%" font="Graphics.FONT_SYSTEM_XTINY" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_LT_GRAY"/>
+	<label id="TopIndicatorLongText2" x="26%" y="26%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_LT_GRAY"/>
 
 	<label id="BluetoothIcon" x="74%" y="40%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="~"/>
 	<label id="DNDIcon" x="74%" y="50%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text=";"/>
+	<label id="NotificationsIcon" x="80%" y="40%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="]"/>
+	<label id="HeartIcon" x="80%" y="50%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="="/>
+
+
+	<label id="BottomIndicatorLongIcon1" x="65%" y="65%" font="@Fonts.CustomFont" color="Graphics.COLOR_LT_GRAY" text="æ"/>
+	<label id="BottomIndicatorLongText1" x="63%" y="63%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_LT_GRAY" text="Sample 1"/>
+	<label id="BottomIndicatorLongIcon2" x="65%" y="71%" font="@Fonts.CustomFont" color="Graphics.COLOR_LT_GRAY" text="}"/>
+	<label id="BottomIndicatorLongText2" x="63%" y="70%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_LT_GRAY" text="Sample 1"/>
 
 
 </layout>

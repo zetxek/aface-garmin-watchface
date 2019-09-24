@@ -14,4 +14,8 @@ Images sources:
 
 - Battery icons: https://www.freepik.com/free-photos-vectors/icon Icon vector created by johndory - www.freepik.com
 - Bluetooth icon: https://www.flaticon.com/authors/smashicons
-- DND icon https://www.flaticon.com/authors/freepik from https://www.flaticon.com/
+- DND icon: https://www.flaticon.com/authors/freepik from https://www.flaticon.com/
+- Flame icons: https://www.freepik.com/free-vector/fire-icons-collection_1079955.htm
+- Stairs: https://www.freepik.com/free-vector/airport-service-signs-vector-set_3529200.htm
+- Steps: https://www.freepik.com/free-vector/footprints-shadows-animals-human_723477.htm
+- Dialog icon: https://www.freepik.com/free-vector/assorted-icons-set_571202.htm

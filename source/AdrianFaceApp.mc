@@ -1,7 +1,16 @@
-using Toybox.Application;
+using Toybox.Application as App;
 using Toybox.WatchUi;
 
-class AdrianFaceApp extends Application.AppBase {
+
+// In-memory current location.
+// Previously persisted in App.Storage, but now persisted in Object Store due to #86 workaround for App.Storage firmware bug.
+// Current location retrieved/saved in checkPendingWebRequests().
+// Persistence allows weather and sunrise/sunset features to be used after watch face restart, even if watch no longer has current
+// location available.
+var gLocationLat = null;
+var gLocationLng = null;
+
+class AdrianFaceApp extends App.AppBase {
 
     function initialize() {
         AppBase.initialize();
@@ -24,5 +33,39 @@ class AdrianFaceApp extends Application.AppBase {
     function onSettingsChanged() {
         WatchUi.requestUpdate();
     }
+    
+    	// Determine if any web requests are needed.
+	// If so, set approrpiate pendingWebRequests flag for use by BackgroundService, then register for
+	// temporal event.
+	// Currently called on layout initialisation, when settings change, and on exiting sleep.
+	(:background_method)
+	function checkPendingWebRequests() {
+
+		// Attempt to update current location, to be used by Sunrise/Sunset, and Weather.
+		// If current location available from current activity, save it in case it goes "stale" and can not longer be retrieved.
+		var location = Activity.getActivityInfo().currentLocation;
+		if (location) {
+			// Sys.println("Saving location");
+			location = location.toDegrees(); // Array of Doubles.
+			gLocationLat = location[0].toFloat();
+			gLocationLng = location[1].toFloat();
+
+			App.getApp().setProperty("LastLocationLat", gLocationLat);
+			App.getApp().setProperty("LastLocationLng", gLocationLng);
+
+		// If current location is not available, read stored value from Object Store, being careful not to overwrite a valid
+		// in-memory value with an invalid stored one.
+		} else {
+			var lat = App.getApp().getProperty("LastLocationLat");
+			if (lat != null) {
+				gLocationLat = lat;
+			}
+
+			var lng = App.getApp().getProperty("LastLocationLng");
+			if (lng != null) {
+				gLocationLng = lng;
+			}
+		}
+	}
 
 }
