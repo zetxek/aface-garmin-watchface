@@ -22,7 +22,7 @@ Images sources:
 
 Current status (work in progress):
 
-![](design/screenshots/Connect-IQ-Device Simulator-2019-09-24 23-38-25.png)
+![](design/screenshots/Connect-IQ-Device-Simulator-2019-09-24 23-38-25.png)
 
 - The compatibility is targeted right now towards 5S and 6S, the only devices I have.
 - No battery/CPU/memory optimizations
