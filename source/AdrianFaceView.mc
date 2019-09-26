@@ -14,9 +14,7 @@ using Toybox.Time.Gregorian;
 
 class AdrianFaceView extends Ui.WatchFace {
 
-
 	const INTEGER_FORMAT = "%d";
-
 
 	var hoursView;
 	var separatorView;
@@ -116,15 +114,15 @@ class AdrianFaceView extends Ui.WatchFace {
 		topIndicatorLongText1View = View.findDrawableById("TopIndicatorLongText1");
 		topIndicatorLongText1View.setText(getSunValue());
 
-		topIndicatorLongText2View = View.findDrawableById("TopIndicatorLongText2");		
-		topIndicatorLongText2View.setText(stats.battery.format(INTEGER_FORMAT) + "%");
-		var topIndicatorLongText2Icon = View.findDrawableById("TopIndicatorLongIcon2");
-		topIndicatorLongText2Icon.setColor(Graphics.COLOR_GREEN);
-		if (stats.battery < 30.0){
-			topIndicatorLongText2Icon.setColor(Graphics.COLOR_YELLOW);
-		}else if (stats.battery < 15.0){
-			topIndicatorLongText2Icon.setColor(Graphics.COLOR_RED);
-		}
+		//topIndicatorLongText2View = View.findDrawableById("TopIndicatorLongText2");		
+		//topIndicatorLongText2View.setText(stats.battery.format(INTEGER_FORMAT) + "%");
+		//var topIndicatorLongText2Icon = View.findDrawableById("TopIndicatorLongIcon2");
+		//topIndicatorLongText2Icon.setColor(Graphics.COLOR_GREEN);
+		//if (stats.battery < 30.0){
+		//	topIndicatorLongText2Icon.setColor(Graphics.COLOR_YELLOW);
+		//}else if (stats.battery < 15.0){
+		//	topIndicatorLongText2Icon.setColor(Graphics.COLOR_RED);
+		//}
 
 		bottomIndicatorLongText1View = View.findDrawableById("BottomIndicatorLongText1");
 		bottomIndicatorLongText1View.setText(activityInfo.calories.format(INTEGER_FORMAT));
@@ -134,24 +132,8 @@ class AdrianFaceView extends Ui.WatchFace {
 		bottomIndicatorLongText2View.setText(value.format(INTEGER_FORMAT));
 
 
-		
-
-        // bluetooth
         View.onUpdate(dc);
-        
-        /*
-        var font = WatchUi.loadResource(Rez.Fonts.CustomFont);
-        dc.setColor(Gfx.COLOR_RED, Gfx.COLOR_WHITE);
-        
-        dc.drawText(100,60, font, Lang.format(
-	    	"$1$ $2$",
-		    	[
-			        "~",
-			        "bt"
-			        
-			    ]
-			), Graphics.TEXT_JUSTIFY_LEFT);*/
-		
+        		
     }
     
     function getSunValue(){

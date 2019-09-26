@@ -7,11 +7,18 @@
 
 	<label id="Date" x="52%" y="38%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE"/>
 
+	<drawable id="DataField1" class="DataField">
+		<param name="dataType">DataField.DATA_FIELD_BATTERY</param>
+		<param name="posX">"18%"</param>
+		<param name="posY">"27%"</param>
+	</drawable>
+	
 	<label id="TopIndicatorLongIcon1" x="18%" y="19%" font="@Fonts.CustomFont" color="Graphics.COLOR_LT_GRAY" text="^"/>
 	<label id="TopIndicatorLongText1" x="26%" y="18%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_LT_GRAY"/>
+	<!-- 
 	<label id="TopIndicatorLongIcon2" x="18%" y="27%" font="@Fonts.CustomFont" color="Graphics.COLOR_LT_GRAY" text=">"/>
 	<label id="TopIndicatorLongText2" x="26%" y="26%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_LT_GRAY"/>
-
+ 	-->
 	<label id="BluetoothIcon" x="74%" y="40%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="~"/>
 	<label id="DNDIcon" x="74%" y="50%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text=";"/>
 	<label id="NotificationsIcon" x="80%" y="40%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="]"/>
