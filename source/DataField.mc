@@ -62,6 +62,15 @@ class DataField extends Ui.Drawable{
 		);
     }
     
+    function getIconColor(){
+    	switch(dataType){
+    		case DATA_FIELD_BATTERY:
+    			return getBatteryColor();
+    		default:
+    			return Gfx.COLOR_LT_GRAY;
+    	}
+    }
+    
     function getIcon(){
     	switch(dataType){
     		case DATA_FIELD_BATTERY:
@@ -80,6 +89,16 @@ class DataField extends Ui.Drawable{
     	}
     	
     }
+    
+    function getBatteryColor(){
+		if (stats.battery < 15.0){
+			return Graphics.COLOR_RED;
+		}else if (stats.battery < 30.0){
+			return Graphics.COLOR_YELLOW;
+		}
+		
+		return Graphics.COLOR_GREEN;
+	}
     
     // as drawText does not support % values, if we want to use them, we transform first
     function calcPixelValue(coord, dc){
