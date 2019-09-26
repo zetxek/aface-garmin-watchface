@@ -68,9 +68,11 @@ class AdrianFaceView extends Ui.WatchFace {
         var hoursString = Lang.format("$1$", [hours]);
    		
    		var today = Gregorian.info(Time.now(), Time.FORMAT_MEDIUM);
+   		// so thursday is not "thurs", but "thu"
+   		var shortDayName = today.day_of_week.substring(0, 3);
    		var dateString = Lang.format(
     		"$1$ $2$",
-    		[today.day_of_week, today.day]
+    		[shortDayName, today.day]
 		);
 		
         // Update the view
