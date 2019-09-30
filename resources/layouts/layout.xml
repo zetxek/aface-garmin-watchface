@@ -8,27 +8,33 @@
 	<label id="Date" x="52%" y="38%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_WHITE"/>
 
 	<drawable id="DataField1" class="DataField">
+		<param name="dataType">DataField.DATA_FIELD_SUN</param>
+		<param name="posX">"18%"</param>
+		<param name="posY">"19%"</param>
+	</drawable>
+	<drawable id="DataField2" class="DataField">
 		<param name="dataType">DataField.DATA_FIELD_BATTERY</param>
 		<param name="posX">"18%"</param>
 		<param name="posY">"27%"</param>
 	</drawable>
 	
-	<label id="TopIndicatorLongIcon1" x="18%" y="19%" font="@Fonts.CustomFont" color="Graphics.COLOR_LT_GRAY" text="^"/>
-	<label id="TopIndicatorLongText1" x="26%" y="18%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_LT_GRAY"/>
-	<!-- 
-	<label id="TopIndicatorLongIcon2" x="18%" y="27%" font="@Fonts.CustomFont" color="Graphics.COLOR_LT_GRAY" text=">"/>
-	<label id="TopIndicatorLongText2" x="26%" y="26%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_LEFT" color="Graphics.COLOR_LT_GRAY"/>
- 	-->
 	<label id="BluetoothIcon" x="74%" y="40%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="~"/>
 	<label id="DNDIcon" x="74%" y="50%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text=";"/>
 	<label id="NotificationsIcon" x="80%" y="40%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="]"/>
 	<label id="HeartIcon" x="80%" y="50%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="="/>
 
 
-	<label id="BottomIndicatorLongIcon1" x="65%" y="65%" font="@Fonts.CustomFont" color="Graphics.COLOR_LT_GRAY" text="æ"/>
-	<label id="BottomIndicatorLongText1" x="63%" y="63%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_LT_GRAY" text="Sample 1"/>
-	<label id="BottomIndicatorLongIcon2" x="65%" y="71%" font="@Fonts.CustomFont" color="Graphics.COLOR_LT_GRAY" text="}"/>
-	<label id="BottomIndicatorLongText2" x="63%" y="70%" font="@Fonts.InterTiny" justification="Graphics.TEXT_JUSTIFY_RIGHT" color="Graphics.COLOR_LT_GRAY" text="Sample 1"/>
-
+	<drawable id="DataField3" class="DataField">
+		<param name="dataType">DataField.DATA_FIELD_CALORIES</param>
+		<param name="posX">"65%"</param>
+		<param name="posY">"65%"</param>
+		<param name="iconAlignment">DataField.ICON_ALIGNMENT_RIGHT</param>
+	</drawable>
+	<drawable id="DataField4" class="DataField">
+		<param name="dataType">DataField.DATA_FIELD_FLOORS</param>
+		<param name="posX">"65%"</param>
+		<param name="posY">"71%"</param>
+		<param name="iconAlignment">DataField.ICON_ALIGNMENT_RIGHT</param>
+	</drawable>
 
 </layout>

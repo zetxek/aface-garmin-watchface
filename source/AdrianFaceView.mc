@@ -20,8 +20,7 @@ class AdrianFaceView extends Ui.WatchFace {
 	var separatorView;
 	var minutesView;
 	var dateView;
-	var topIndicatorLongText1View;
-	var topIndicatorLongText2View;
+	
 	var bottomIndicatorLongText1View;
 	var bottomIndicatorLongText2View;
 	
@@ -109,20 +108,6 @@ class AdrianFaceView extends Ui.WatchFace {
 		if (notificationCount > 0){
 			notificationIcon.setColor(Graphics.COLOR_GREEN);	
 		}
-		
-		var heartIcon = View.findDrawableById("HeartIcon");
-		
-		
-		topIndicatorLongText1View = View.findDrawableById("TopIndicatorLongText1");
-		topIndicatorLongText1View.setText(getSunValue());
-
-		bottomIndicatorLongText1View = View.findDrawableById("BottomIndicatorLongText1");
-		bottomIndicatorLongText1View.setText(activityInfo.calories.format(INTEGER_FORMAT));
-		
-		bottomIndicatorLongText2View = View.findDrawableById("BottomIndicatorLongText2");
-		var value= activityInfo.floorsClimbed;
-		bottomIndicatorLongText2View.setText(value.format(INTEGER_FORMAT));
-
 
         View.onUpdate(dc);
         		

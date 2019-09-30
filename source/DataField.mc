@@ -1,13 +1,20 @@
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
 using Toybox.System;
+
+using Toybox.ActivityMonitor as ActivityMonitor;
+
 /**
  ** Draws a data field next to an optional icon
 **/ 
 class DataField extends Ui.Drawable{
 
+	// custom font glyps for the icons on screen
 	const CHAR_ICON_BLUETOOTH	= "~";
 	const CHAR_ICON_BATTERY 	= ">";
+	const CHAR_ICON_CALORIES	= "æ";
+	const CHAR_ICON_SUN			= "^";
+	const CHAR_ICON_FLOORS		= "}";
 	
 	enum{
 		DATA_FIELD_BATTERY,
@@ -16,27 +23,37 @@ class DataField extends Ui.Drawable{
 		DATA_FIELD_STEPS,
 		DATA_FIELD_FLOORS,
 	}
+	
+	enum{
+		ICON_ALIGNMENT_LEFT,
+		ICON_ALIGNMENT_RIGHT
+	}
 
 	var hasIcon = true;
 	var dataType;
+	var iconAlignment = ICON_ALIGNMENT_LEFT;
 	
 	var posX = 0;
 	var posY = 0;
 	
 	var stats;
+	var activityInfo;
 
 	function initialize(params) {
         Drawable.initialize(params);
         dataType = params.get(:dataType);
+        iconAlignment = params.get(:iconAlignment);
         posX = params.get(:posX);
         posY = params.get(:posY);
         System.println("Data type args: " + params);
+        
         stats = System.getSystemStats();
+    	activityInfo = ActivityMonitor.getInfo();
     }
     
     function draw(dc) {
         var font = WatchUi.loadResource(Rez.Fonts.CustomFont);
-        dc.setColor(Gfx.COLOR_GREEN, Gfx.COLOR_TRANSPARENT);
+        dc.setColor(getIconColor(), Gfx.COLOR_TRANSPARENT);
         
         var posX1 = calcPixelValue(posX, dc);
         var posY1 = calcPixelValue(posY, dc);
@@ -51,14 +68,22 @@ class DataField extends Ui.Drawable{
 		font = WatchUi.loadResource(Rez.Fonts.InterTiny);
 		dc.setColor(Gfx.COLOR_LT_GRAY, Gfx.COLOR_TRANSPARENT);
 		
-		var posX2 = posX1 + 16;
-		var posY2 = posY1 - 6;
+		var offsetX = 16;
+		var offsetY = 0;
+		var textAlignment = Graphics.TEXT_JUSTIFY_LEFT;
+		
+		if (iconAlignment == ICON_ALIGNMENT_RIGHT){
+			offsetX = -6;
+			textAlignment = Graphics.TEXT_JUSTIFY_RIGHT;
+		}
+		var posX2 = posX1 + offsetX;
+		var posY2 = posY1 - offsetY;
         dc.drawText(
         	posX2,
         	calcPixelValue(posY, dc), 
         	font, 
         	getTextValue(), 
-			Graphics.TEXT_JUSTIFY_LEFT
+			textAlignment
 		);
     }
     
@@ -75,6 +100,12 @@ class DataField extends Ui.Drawable{
     	switch(dataType){
     		case DATA_FIELD_BATTERY:
     			return CHAR_ICON_BATTERY;
+    		case DATA_FIELD_CALORIES:
+    			return CHAR_ICON_CALORIES;
+    		case DATA_FIELD_FLOORS:
+    			return CHAR_ICON_FLOORS;
+    		case DATA_FIELD_SUN:
+    			return CHAR_ICON_SUN;
     		default:
     			return "";
     	}
@@ -84,6 +115,13 @@ class DataField extends Ui.Drawable{
     	switch(dataType){
     		case DATA_FIELD_BATTERY:
     			return stats.battery.format("%d") + "%";
+    		case DATA_FIELD_CALORIES:
+    			return activityInfo.calories.format("%d");
+    		case DATA_FIELD_FLOORS:
+    			return activityInfo.floorsClimbed.format("%d");
+		
+    		case DATA_FIELD_SUN:
+    			return getSunValue();
     		default:
     			return "";
     	}
@@ -111,5 +149,65 @@ class DataField extends Ui.Drawable{
     	return coord;
     }
     
+        function getSunValue(){
     
+    	var sunCalc = new SunCalc();
+    	var value;
+    	if (gLocationLat != null) {
+			var nextSunEvent = 0;
+			var now = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+
+			// Convert to same format as sunTimes, for easier comparison. Add a minute, so that e.g. if sun rises at
+			// 07:38:17, then 07:38 is already consided daytime (seconds not shown to user).
+			now = now.hour + ((now.min + 1) / 60.0);
+			//Sys.println(now);
+
+			// Get today's sunrise/sunset times in current time zone.
+			sunTimes = sunCalc.getSunTimes(gLocationLat, gLocationLng, null, /* tomorrow */ false);
+			//Sys.println(sunTimes);
+
+			// If sunrise/sunset happens today.
+			var sunriseSunsetToday = ((sunTimes[0] != null) && (sunTimes[1] != null));
+			if (sunriseSunsetToday) {
+
+				// Before sunrise today: today's sunrise is next.
+				if (now < sunTimes[0]) {
+					nextSunEvent = sunTimes[0];
+					// result["isSunriseNext"] = true;
+
+				// After sunrise today, before sunset today: today's sunset is next.
+				} else if (now < sunTimes[1]) {
+					nextSunEvent = sunTimes[1];
+
+				// After sunset today: tomorrow's sunrise (if any) is next.
+				} else {
+					sunTimes = sunCalc.getSunTimes(gLocationLat, gLocationLng, null, /* tomorrow */ true);
+					nextSunEvent = sunTimes[0];
+					// result["isSunriseNext"] = true;
+				}
+			}
+
+			// Sun never rises/sets today.
+			if (!sunriseSunsetToday) {
+				value = "---";
+
+				// Sun never rises: sunrise is next, but more than a day from now.
+				if (sunTimes[0] == null) {
+					// result["isSunriseNext"] = true;
+				}
+
+			// We have a sunrise/sunset time.
+			} else {
+				var hour = Math.floor(nextSunEvent).toLong() % 24;
+				var min = Math.floor((nextSunEvent - Math.floor(nextSunEvent)) * 60); // Math.floor(fractional_part * 60)
+				value = getFormattedTime(hour, min);
+				value = value[:hour] + ":" + value[:min] + value[:amPm]; 
+			}
+
+		// Waiting for location.
+		} else {
+			value = "gps?";
+		}
+    	return value;
+    }
 }
