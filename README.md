@@ -22,7 +22,9 @@ Images sources:
 
 Current status (work in progress):
 
-![screenshot in fenix 6s simulator, 2019-09-24](design/screenshots/Connect-IQ-Device-Simulator-2019-09-24 23-38-25.png)
+
+https://github.com/zetxek/aface-garmin-watchface/blob/master/design/screenshots/Connect-IQ-Device-Simulator-2019-09-24%2023-38-25.png?raw=true![image](https://user-images.githubusercontent.com/240085/207047150-f4b075a7-5efd-4646-83e6-5761f2a29584.png)
+
 
 - The compatibility is targeted right now towards 5S and 6S, the only devices I have.
 - No battery/CPU/memory optimizations
