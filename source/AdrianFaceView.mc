@@ -16,10 +16,10 @@ class AdrianFaceView extends Ui.WatchFace {
 
 	const INTEGER_FORMAT = "%d";
 
-	var hoursView;
-	var separatorView;
-	var minutesView;
-	var dateView;
+	var hoursView as Ui.Text or Null;
+	var separatorView as  Ui.Text or Null;
+	var minutesView as  Ui.Text or Null;
+	var dateView as  Ui.Text or Null;
 	
 	var bottomIndicatorLongText1View;
 	var bottomIndicatorLongText2View;
@@ -75,16 +75,16 @@ class AdrianFaceView extends Ui.WatchFace {
 		);
 		
         // Update the view
-        hoursView = View.findDrawableById("TimeHour");
+        hoursView = View.findDrawableById("TimeHour") as Ui.Text;
         hoursView.setText(hoursString);
         
-        separatorView = View.findDrawableById("TimeSeparator");
+        separatorView = View.findDrawableById("TimeSeparator") as Ui.Text;
        	separatorView.setText(":");
        	
-        minutesView = View.findDrawableById("TimeMinutes");
+        minutesView = View.findDrawableById("TimeMinutes") as Ui.Text;
         minutesView.setText(minutesString);
 
-		dateView = View.findDrawableById("Date");
+		dateView = View.findDrawableById("Date") as Ui.Text;
 		dateView.setText(dateString);
 		
 		bluetoothIcon = View.findDrawableById("BluetoothIcon");
@@ -95,7 +95,7 @@ class AdrianFaceView extends Ui.WatchFace {
 			bluetoothIcon.setColor(Graphics.COLOR_RED);
 		}
 		
-		var dndIcon = View.findDrawableById("DNDIcon");
+		var dndIcon = View.findDrawableById("DNDIcon") as Ui.Text;
 		var doNotDisturb = settings.doNotDisturb;
 		if (doNotDisturb){
 			dndIcon.setColor(Graphics.COLOR_GREEN);		
@@ -103,7 +103,7 @@ class AdrianFaceView extends Ui.WatchFace {
 			dndIcon.setColor(Graphics.COLOR_RED);		
 		}
 
-		var notificationIcon = View.findDrawableById("NotificationsIcon");
+		var notificationIcon = View.findDrawableById("NotificationsIcon") as Ui.Text;
 		var notificationCount = settings.notificationCount;
 		if (notificationCount > 0){
 			notificationIcon.setColor(Graphics.COLOR_GREEN);	
@@ -164,7 +164,7 @@ class AdrianFaceView extends Ui.WatchFace {
 			} else {
 				var hour = Math.floor(nextSunEvent).toLong() % 24;
 				var min = Math.floor((nextSunEvent - Math.floor(nextSunEvent)) * 60); // Math.floor(fractional_part * 60)
-				value = getFormattedTime(hour, min);
+				value = sunCalc.getFormattedTime(hour, min);
 				value = value[:hour] + ":" + value[:min] + value[:amPm]; 
 			}
 

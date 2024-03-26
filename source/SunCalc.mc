@@ -122,7 +122,7 @@ class SunCalc{
 // Return a formatted time dictionary that respects is24Hour and HideHoursLeadingZero settings.
 	// - hour: 0-23.
 	// - min:  0-59.
-	function getFormattedTime(hour, min) {
+	public function getFormattedTime(hour, min) {
 		var amPm = "";
 
 		if (!Sys.getDeviceSettings().is24Hour) {
@@ -148,7 +148,7 @@ class SunCalc{
 
 		// #10 If in 12-hour mode with Hide Hours Leading Zero set, hide leading zero. Otherwise, show leading zero.
 		// #69 Setting now applies to both 12- and 24-hour modes.
-		hour = hour.format(App.getApp().getProperty("HideHoursLeadingZero") ? INTEGER_FORMAT : "%02d");
+		hour = hour.format(App.getApp().getProperty("HideHoursLeadingZero") ? NUMBER_FORMAT_SINT16 : "%02d");
 
 		return {
 			:hour => hour,

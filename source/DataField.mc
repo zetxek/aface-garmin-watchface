@@ -38,6 +38,7 @@ class DataField extends Ui.Drawable{
 	
 	var stats;
 	var activityInfo;
+	var sunTimes;
 
 	function initialize(params) {
         Drawable.initialize(params);
@@ -155,7 +156,7 @@ class DataField extends Ui.Drawable{
     	var value;
     	if (gLocationLat != null) {
 			var nextSunEvent = 0;
-			var now = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
+			var now = Toybox.Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
 
 			// Convert to same format as sunTimes, for easier comparison. Add a minute, so that e.g. if sun rises at
 			// 07:38:17, then 07:38 is already consided daytime (seconds not shown to user).
@@ -200,7 +201,7 @@ class DataField extends Ui.Drawable{
 			} else {
 				var hour = Math.floor(nextSunEvent).toLong() % 24;
 				var min = Math.floor((nextSunEvent - Math.floor(nextSunEvent)) * 60); // Math.floor(fractional_part * 60)
-				value = getFormattedTime(hour, min);
+				value = sunCalc.getFormattedTime(hour, min);
 				value = value[:hour] + ":" + value[:min] + value[:amPm]; 
 			}
 
