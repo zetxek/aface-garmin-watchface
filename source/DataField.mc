@@ -202,7 +202,9 @@ class DataField extends Ui.Drawable{
 				var hour = Math.floor(nextSunEvent).toLong() % 24;
 				var min = Math.floor((nextSunEvent - Math.floor(nextSunEvent)) * 60); // Math.floor(fractional_part * 60)
 				value = sunCalc.getFormattedTime(hour, min);
-				value = value[:hour] + ":" + value[:min] + value[:amPm]; 
+				value = value[:hour] as Toybox.Lang.String 
+						+ ":" + value[:min] as Toybox.Lang.String 
+						+ value[:amPm] as Toybox.Lang.String; 
 			}
 
 		// Waiting for location.
