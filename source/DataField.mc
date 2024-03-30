@@ -1,3 +1,5 @@
+import Toybox.Lang;
+
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
 using Toybox.System;
@@ -38,7 +40,7 @@ class DataField extends Ui.Drawable{
 	
 	var stats;
 	var activityInfo;
-	var sunTimes;
+	var sunTimes as Array<Float> or Null;
 
 	function initialize(params) {
         Drawable.initialize(params);
@@ -66,11 +68,11 @@ class DataField extends Ui.Drawable{
         	Graphics.TEXT_JUSTIFY_LEFT
         );
 		
-		font = WatchUi.loadResource(Rez.Fonts.InterTiny);
+		font = Graphics.FONT_SYSTEM_TINY;
 		dc.setColor(Gfx.COLOR_LT_GRAY, Gfx.COLOR_TRANSPARENT);
 		
 		var offsetX = 16;
-		var offsetY = 0;
+		var offsetY = -40;
 		var textAlignment = Graphics.TEXT_JUSTIFY_LEFT;
 		
 		if (iconAlignment == ICON_ALIGNMENT_RIGHT){
@@ -120,7 +122,6 @@ class DataField extends Ui.Drawable{
     			return activityInfo.calories.format("%d");
     		case DATA_FIELD_FLOORS:
     			return activityInfo.floorsClimbed.format("%d");
-		
     		case DATA_FIELD_SUN:
     			return getSunValue();
     		default:
@@ -150,7 +151,7 @@ class DataField extends Ui.Drawable{
     	return coord;
     }
     
-        function getSunValue(){
+    function getSunValue(){
     
     	var sunCalc = new SunCalc();
     	var value;
@@ -209,7 +210,7 @@ class DataField extends Ui.Drawable{
 
 		// Waiting for location.
 		} else {
-			value = "gps?";
+			value = "❌ gps";
 		}
     	return value;
     }

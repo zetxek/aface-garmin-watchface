@@ -148,7 +148,7 @@ class SunCalc{
 
 		// #10 If in 12-hour mode with Hide Hours Leading Zero set, hide leading zero. Otherwise, show leading zero.
 		// #69 Setting now applies to both 12- and 24-hour modes.
-		hour = hour.format(App.getApp().getProperty("HideHoursLeadingZero") ? NUMBER_FORMAT_SINT16 : "%02d");
+		hour = hour.format(App.Properties.getValue("HideHoursLeadingZero") ? NUMBER_FORMAT_SINT16 : "%02d");
 
 		return {
 			:hour => hour,
