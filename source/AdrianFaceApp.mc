@@ -50,18 +50,18 @@ class AdrianFaceApp extends App.AppBase {
 			gLocationLat = location[0].toFloat();
 			gLocationLng = location[1].toFloat();
 
-			App.getApp().setProperty("LastLocationLat", gLocationLat);
-			App.getApp().setProperty("LastLocationLng", gLocationLng);
+			App.Properties.setValue("LastLocationLat", gLocationLat);
+			App.Properties.setValue("LastLocationLng", gLocationLng);
 
 		// If current location is not available, read stored value from Object Store, being careful not to overwrite a valid
 		// in-memory value with an invalid stored one.
 		} else {
-			var lat = App.getApp().getProperty("LastLocationLat");
+			var lat = App.Properties.getValue("LastLocationLat");
 			if (lat != null) {
 				gLocationLat = lat;
 			}
 
-			var lng = App.getApp().getProperty("LastLocationLng");
+			var lng = App.Properties.getValue("LastLocationLng");
 			if (lng != null) {
 				gLocationLng = lng;
 			}
