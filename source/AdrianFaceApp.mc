@@ -44,7 +44,7 @@ class AdrianFaceApp extends App.AppBase {
 		// Attempt to update current location, to be used by Sunrise/Sunset, and Weather.
 		// If current location available from current activity, save it in case it goes "stale" and can not longer be retrieved.
 		var location = Activity.getActivityInfo().currentLocation;
-		if (location) {
+		if (location != null) {
 			// Sys.println("Saving location");
 			location = location.toDegrees(); // Array of Doubles.
 			gLocationLat = location[0].toFloat();
