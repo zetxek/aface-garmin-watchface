@@ -72,7 +72,7 @@ class DataField extends Ui.Drawable{
 		dc.setColor(Gfx.COLOR_LT_GRAY, Gfx.COLOR_TRANSPARENT);
 		
 		var offsetX = 16;
-		var offsetY = -40;
+		var offsetY = -8;
 		var textAlignment = Graphics.TEXT_JUSTIFY_LEFT;
 		
 		if (iconAlignment == ICON_ALIGNMENT_RIGHT){
@@ -80,10 +80,10 @@ class DataField extends Ui.Drawable{
 			textAlignment = Graphics.TEXT_JUSTIFY_RIGHT;
 		}
 		var posX2 = posX1 + offsetX;
-		var posY2 = posY1 - offsetY;
+		var posY2 = posY1 + offsetY;
         dc.drawText(
         	posX2,
-        	calcPixelValue(posY, dc), 
+        	posY2, 
         	font, 
         	getTextValue(), 
 			textAlignment
@@ -147,14 +147,14 @@ class DataField extends Ui.Drawable{
     		coord = coord.toFloat();
     		coord = coord * dc.getWidth() / 100;
     	}
-    	
     	return coord;
     }
     
     function getSunValue(){
     
     	var sunCalc = new SunCalc();
-    	var value;
+    	var value = new Array<String>[0];
+
     	if (gLocationLat != null) {
 			var nextSunEvent = 0;
 			var now = Toybox.Time.Gregorian.info(Time.now(), Time.FORMAT_SHORT);
@@ -169,7 +169,7 @@ class DataField extends Ui.Drawable{
 			//Sys.println(sunTimes);
 
 			// If sunrise/sunset happens today.
-			var sunriseSunsetToday = ((sunTimes[0] != null) && (sunTimes[1] != null));
+			var sunriseSunsetToday = ((sunTimes[0] as Float != null) && (sunTimes[1] as Float != null));
 			if (sunriseSunsetToday) {
 
 				// Before sunrise today: today's sunrise is next.
@@ -184,7 +184,7 @@ class DataField extends Ui.Drawable{
 				// After sunset today: tomorrow's sunrise (if any) is next.
 				} else {
 					sunTimes = sunCalc.getSunTimes(gLocationLat, gLocationLng, null, /* tomorrow */ true);
-					nextSunEvent = sunTimes[0];
+					nextSunEvent = sunTimes[0] as Float;
 					// result["isSunriseNext"] = true;
 				}
 			}
@@ -203,9 +203,9 @@ class DataField extends Ui.Drawable{
 				var hour = Math.floor(nextSunEvent).toLong() % 24;
 				var min = Math.floor((nextSunEvent - Math.floor(nextSunEvent)) * 60); // Math.floor(fractional_part * 60)
 				value = sunCalc.getFormattedTime(hour, min);
-				value = value[:hour] as Toybox.Lang.String 
-						+ ":" + value[:min] as Toybox.Lang.String 
-						+ value[:amPm] as Toybox.Lang.String; 
+				value = value[:hour] as String 
+						+ ":" + value[:min] as String 
+						+ value[:amPm] as String; 
 			}
 
 		// Waiting for location.
