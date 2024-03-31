@@ -55,7 +55,7 @@ class DataField extends Ui.Drawable{
     }
     
     function draw(dc) {
-        var font = WatchUi.loadResource(Rez.Fonts.CustomFont);
+        var font = WatchUi.loadResource(Rez.Fonts.CustomIconFont);
         dc.setColor(getIconColor(), Gfx.COLOR_TRANSPARENT);
         
         var posX1 = calcPixelValue(posX, dc);
@@ -68,11 +68,11 @@ class DataField extends Ui.Drawable{
         	Graphics.TEXT_JUSTIFY_LEFT
         );
 		
-		font = Graphics.FONT_SYSTEM_TINY;
+		font = Graphics.FONT_SYSTEM_XTINY;
 		dc.setColor(Gfx.COLOR_LT_GRAY, Gfx.COLOR_TRANSPARENT);
 		
-		var offsetX = 16;
-		var offsetY = -8;
+		var offsetX = 24;
+		var offsetY = 0;
 		var textAlignment = Graphics.TEXT_JUSTIFY_LEFT;
 		
 		if (iconAlignment == ICON_ALIGNMENT_RIGHT){
@@ -126,17 +126,15 @@ class DataField extends Ui.Drawable{
     			return getSunValue();
     		default:
     			return "";
-    	}
-    	
+    	}	
     }
     
     function getBatteryColor(){
-		if (stats.battery < 15.0){
+		if (stats.battery < 20.0){
 			return Graphics.COLOR_RED;
 		}else if (stats.battery < 30.0){
 			return Graphics.COLOR_YELLOW;
 		}
-		
 		return Graphics.COLOR_GREEN;
 	}
     
