@@ -12,11 +12,11 @@ using Toybox.ActivityMonitor as ActivityMonitor;
 class DataField extends Ui.Drawable{
 
 	// custom font glyps for the icons on screen
-	const CHAR_ICON_BLUETOOTH	= "~";
-	const CHAR_ICON_BATTERY 	= ">";
-	const CHAR_ICON_CALORIES	= "æ";
-	const CHAR_ICON_SUN			= "^";
-	const CHAR_ICON_FLOORS		= "}";
+	const CHAR_ICON_BLUETOOTH	= "c";
+	const CHAR_ICON_BATTERY 	= "d";
+	const CHAR_ICON_CALORIES	= "i";
+	const CHAR_ICON_SUN			= "b";
+	const CHAR_ICON_FLOORS		= "e";
 	
 	enum{
 		DATA_FIELD_BATTERY,
@@ -210,7 +210,7 @@ class DataField extends Ui.Drawable{
 
 		// Waiting for location.
 		} else {
-			value = "❌ gps";
+			value = "...";
 		}
     	return value;
     }
