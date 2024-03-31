@@ -26,6 +26,6 @@ Current status (work in progress):
 https://github.com/zetxek/aface-garmin-watchface/blob/master/design/screenshots/Connect-IQ-Device-Simulator-2019-09-24%2023-38-25.png?raw=true![image](https://user-images.githubusercontent.com/240085/207047150-f4b075a7-5efd-4646-83e6-5761f2a29584.png)
 
 
-- The compatibility is targeted right now towards 5S and 6S, the only devices I have.
+- The compatibility is targeted right now towards 6S Pro, the only device I have - so the SDK level is 3.4.0 (System 6)
 - No battery/CPU/memory optimizations
 - Font maps created with [bmGlyph](https://www.bmglyph.com/) for Mac
