@@ -9,19 +9,19 @@
 
 	<drawable id="DataField1" class="DataField">
 		<param name="dataType">DataField.DATA_FIELD_SUN</param>
-		<param name="posX">"18%"</param>
+		<param name="posX">"16%"</param>
 		<param name="posY">"19%"</param>
 	</drawable>
 	<drawable id="DataField2" class="DataField">
 		<param name="dataType">DataField.DATA_FIELD_BATTERY</param>
-		<param name="posX">"18%"</param>
+		<param name="posX">"16%"</param>
 		<param name="posY">"27%"</param>
 	</drawable>
 	
-	<label id="BluetoothIcon" x="74%" y="40%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="~"/>
-	<label id="DNDIcon" x="74%" y="50%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text=";"/>
-	<label id="NotificationsIcon" x="80%" y="40%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="]"/>
-	<label id="HeartIcon" x="80%" y="50%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="="/>
+	<label id="BluetoothIcon" x="74%" y="40%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="c"/>
+	<label id="DNDIcon" x="74%" y="50%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="j"/>
+	<label id="NotificationsIcon" x="80%" y="40%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="g"/>
+	<label id="HeartIcon" x="80%" y="50%" font="@Fonts.CustomFont" color="Graphics.COLOR_BLUE" text="i"/>
 
 
 	<drawable id="DataField3" class="DataField">
