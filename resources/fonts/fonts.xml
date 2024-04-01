@@ -1,4 +1,4 @@
 <fonts>
 	<font id="CustomIconFont" filename="customIconFont.fnt" antialias="true"/>
-	<font id="InterTiny" filename="inter-tiny.fnt" antialias="true"/>
+	<font id="GarminIcon" filename="garmin.fnt" antialias="true"/>
 </fonts>
