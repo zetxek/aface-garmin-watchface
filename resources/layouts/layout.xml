@@ -10,32 +10,32 @@
 	<drawable id="DataField1" class="DataField">
 		<param name="dataType">DataField.DATA_FIELD_SUN</param>
 		<param name="posX">"12%"</param>
-		<param name="posY">"19%"</param>
+		<param name="posY">"17%"</param>
 		<param name="iconAlignment">DataField.ICON_ALIGNMENT_LEFT</param>
 	</drawable>
 	<drawable id="DataField2" class="DataField">
 		<param name="dataType">DataField.DATA_FIELD_BATTERY</param>
 		<param name="posX">"12%"</param>
-		<param name="posY">"27%"</param>
+		<param name="posY">"25%"</param>
 		<param name="iconAlignment">DataField.ICON_ALIGNMENT_LEFT</param>
 	</drawable>
 	
-	<label id="BluetoothIcon" x="74%" y="40%" font="@Fonts.CustomIconFont" color="Graphics.COLOR_BLUE" text="c"/>
-	<label id="DNDIcon" x="74%" y="50%" font="@Fonts.CustomIconFont" color="Graphics.COLOR_BLUE" text="j"/>
-	<label id="NotificationsIcon" x="82%" y="40%" font="@Fonts.CustomIconFont" color="Graphics.COLOR_BLUE" text="g"/>
-	<label id="HeartIcon" x="82%" y="50%" font="@Fonts.CustomIconFont" color="Graphics.COLOR_BLUE" text="i"/>
+	<label id="BluetoothIcon" x="74%" y="36%" font="@Fonts.GarminIcon" color="Graphics.COLOR_BLUE" text="V"/>
+	<label id="DNDIcon" x="74%" y="48%" font="@Fonts.GarminIcon" color="Graphics.COLOR_BLUE" text="c"/>
+	<label id="NotificationsIcon" x="84%" y="36%" font="@Fonts.GarminIcon" color="Graphics.COLOR_BLUE" text="Â"/>
+	<label id="AlarmIcon" x="84%" y="48%" font="@Fonts.GarminIcon" color="Graphics.COLOR_BLUE" text="R"/>
 
 
 	<drawable id="DataField3" class="DataField">
 		<param name="dataType">DataField.DATA_FIELD_CALORIES</param>
-		<param name="posX">"65%"</param>
+		<param name="posX">"60%"</param>
 		<param name="posY">"65%"</param>
 		<param name="iconAlignment">DataField.ICON_ALIGNMENT_RIGHT</param>
 	</drawable>
 	<drawable id="DataField4" class="DataField">
 		<param name="dataType">DataField.DATA_FIELD_FLOORS</param>
-		<param name="posX">"65%"</param>
-		<param name="posY">"74%"</param>
+		<param name="posX">"60%"</param>
+		<param name="posY">"76%"</param>
 		<param name="iconAlignment">DataField.ICON_ALIGNMENT_RIGHT</param>
 	</drawable>
 

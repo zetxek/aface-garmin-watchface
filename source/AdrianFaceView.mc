@@ -90,7 +90,7 @@ class AdrianFaceView extends Ui.WatchFace {
 		bluetoothIcon = View.findDrawableById("BluetoothIcon");
 		var phone = settings.phoneConnected;
 		if (phone){
-			bluetoothIcon.setColor(Graphics.COLOR_GREEN);		
+			bluetoothIcon.setColor(Graphics.COLOR_BLUE);		
 		}else{
 			bluetoothIcon.setColor(Graphics.COLOR_RED);
 		}
@@ -98,15 +98,25 @@ class AdrianFaceView extends Ui.WatchFace {
 		var dndIcon = View.findDrawableById("DNDIcon") as Ui.Text;
 		var doNotDisturb = settings.doNotDisturb;
 		if (doNotDisturb){
-			dndIcon.setColor(Graphics.COLOR_GREEN);		
+			dndIcon.setColor(Graphics.COLOR_DK_GREEN);		
 		}else{
-			dndIcon.setColor(Graphics.COLOR_RED);		
+			dndIcon.setColor(Graphics.COLOR_LT_GRAY);		
 		}
 
 		var notificationIcon = View.findDrawableById("NotificationsIcon") as Ui.Text;
 		var notificationCount = settings.notificationCount;
 		if (notificationCount > 0){
-			notificationIcon.setColor(Graphics.COLOR_GREEN);	
+			notificationIcon.setColor(Graphics.COLOR_RED);	
+		}else{
+			notificationIcon.setColor(Graphics.COLOR_LT_GRAY);
+		}
+
+		var alarmIcon = View.findDrawableById("AlarmIcon") as Ui.Text;
+		var alarmCount = System.getDeviceSettings().alarmCount;
+		if (alarmCount > 0){
+			alarmIcon.setColor(Graphics.COLOR_DK_GREEN);
+		}else{
+			alarmIcon.setColor(Graphics.COLOR_LT_GRAY);
 		}
 
         View.onUpdate(dc);

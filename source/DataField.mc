@@ -12,11 +12,11 @@ using Toybox.ActivityMonitor as ActivityMonitor;
 class DataField extends Ui.Drawable{
 
 	// custom font glyps for the icons on screen
-	const CHAR_ICON_BLUETOOTH	= "c";
-	const CHAR_ICON_BATTERY 	= "d";
-	const CHAR_ICON_CALORIES	= "i";
+	const CHAR_ICON_BLUETOOTH	= "V";
+	const CHAR_ICON_BATTERY 	= "S";
+	const CHAR_ICON_CALORIES	= "X";
 	const CHAR_ICON_SUN			= "b";
-	const CHAR_ICON_FLOORS		= "e";
+	const CHAR_ICON_FLOORS		= "B";
 	
 	enum{
 		DATA_FIELD_BATTERY,
@@ -55,7 +55,7 @@ class DataField extends Ui.Drawable{
     }
     
     function draw(dc) {
-        var font = WatchUi.loadResource(Rez.Fonts.CustomIconFont);
+        var font = WatchUi.loadResource(Rez.Fonts.GarminIcon);
         dc.setColor(getIconColor(), Gfx.COLOR_TRANSPARENT);
         
         var posX1 = calcPixelValue(posX, dc);
@@ -72,7 +72,7 @@ class DataField extends Ui.Drawable{
 		dc.setColor(Gfx.COLOR_LT_GRAY, Gfx.COLOR_TRANSPARENT);
 		
 		var offsetX = 24;
-		var offsetY = 0;
+		var offsetY = 6;
 		var textAlignment = Graphics.TEXT_JUSTIFY_LEFT;
 		
 		if (iconAlignment == ICON_ALIGNMENT_RIGHT){
@@ -135,7 +135,7 @@ class DataField extends Ui.Drawable{
 		}else if (stats.battery < 30.0){
 			return Graphics.COLOR_YELLOW;
 		}
-		return Graphics.COLOR_GREEN;
+		return Graphics.COLOR_DK_GREEN;
 	}
     
     // as drawText does not support % values, if we want to use them, we transform first
